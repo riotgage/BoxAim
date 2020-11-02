@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".authentication.RegisterActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="55dp"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@mipmap/boxaimlogo"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_margin="25dp"
+            android:textColor="@color/primaryblue"
+            android:text="Log in to your Account"
+            android:textSize="20sp" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:hint="Email"
+            android:textColor="@color/primaryblue"
+            android:backgroundTint="@color/primaryblue"
+            android:id="@+id/input_email"
+            android:layout_marginTop="15dp"
+            android:layout_marginHorizontal="25dp"/>
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:hint="Full Name"
+            android:id="@+id/input_name"
+            android:textColor="@color/primaryblue"
+            android:backgroundTint="@color/primaryblue"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginTop="15dp"/>
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:backgroundTint="@color/primaryblue"
+            android:hint="Password"
+            android:id="@+id/input_password"
+            android:textColor="@color/primaryblue"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginTop="15dp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:hint="Confirm Password"
+            android:backgroundTint="@color/primaryblue"
+            android:id="@+id/input_confirm_password"
+            android:layout_marginHorizontal="25dp"
+            android:textColor="@color/primaryblue"
+            android:layout_marginTop="15dp"/>
+
+
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="25dp"
+            android:layout_marginTop="25dp"
+            android:text="Register"
+            android:textColor="@color/white"
+            android:background="@color/primaryred"
+            android:id="@+id/btn_register"
+            android:padding="12dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="25dp"
+            android:text="Back to Login"
+            android:gravity="right"
+            android:paddingHorizontal="20dp"
+            android:textSize="16dp"
+            android:textColor="@color/primaryblue"
+            android:id="@+id/link_login"/>
+
+
+    </LinearLayout>
+
+    <ProgressBar
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:indeterminateTint="@color/primaryblue"
+        android:id="@+id/progressBar"
+        android:layout_centerInParent="true"/>
+</RelativeLayout>

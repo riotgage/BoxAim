@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_margin="15dp"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:elevation="20dp"
+                    app:cardCornerRadius="10dp"
+                    android:id="@+id/post_image_card"
+                    android:layout_height="wrap_content">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:id="@+id/post_image"
+                            android:layout_gravity="center"
+                            android:layout_centerHorizontal="true"
+                            android:scaleType="centerCrop"
+                            android:src="@mipmap/boxaimlogo"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:layout_marginVertical="10dp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_below="@+id/post_image"
+                            android:text="Tap To Add Your Image"/>
+                    </RelativeLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_marginVertical="5dp"
+                    app:cardCornerRadius="20dp"
+                    android:layout_marginHorizontal="15dp"
+                    android:elevation="20dp"
+                    android:id="@+id/post_title_card"
+                    android:layout_below="@+id/post_image_card"
+                    android:layout_height="wrap_content">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginHorizontal="15dp"
+                        android:elevation="20dp">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Title"
+                                android:textColor="@color/black"
+                                android:textSize="17sp"
+                                android:id="@+id/tv_post_title"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="10dp"/>
+
+                            <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="15sp"
+                                android:layout_below="@+id/tv_post_title"
+                                android:hint="Enter Post Title"
+                                android:layout_marginLeft="10dp"
+                                android:id="@+id/post_title"
+                                android:layout_marginVertical="10dp"
+                                android:textColor="@color/primaryred"
+                                android:textCursorDrawable="@color/primaryred"
+                                android:inputType="textCapCharacters"/>
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    app:cardCornerRadius="20dp"
+                    android:layout_marginVertical="5dp"
+                    android:layout_marginHorizontal="15dp"
+                    android:elevation="20dp"
+                    android:id="@+id/post_desc_card"
+                    android:layout_below="@+id/post_title_card"
+                    android:layout_height="wrap_content">
+
+                        <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginHorizontal="15dp"
+                        android:elevation="20dp">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Describe The Item"
+                                android:textColor="@color/black"
+                                android:textSize="17sp"
+                                android:id="@+id/tv_post_desc"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="10dp"/>
+
+                            <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="100dp"
+                                android:textSize="15sp"
+                                android:gravity="start"
+                                android:layout_below="@+id/tv_post_desc"
+                                android:layout_marginLeft="10dp"
+                                android:hint="Enter Description for the Item"
+                                android:id="@+id/post_desc"
+                                android:layout_marginVertical="10dp"
+                                android:textColor="@color/primaryred"
+                                android:maxLines="10"
+                                android:textCursorDrawable="@color/primaryred"
+                                android:inputType="textCapCharacters"/>
+
+                    </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                app:cardCornerRadius="20dp"
+                android:layout_marginVertical="5dp"
+                android:layout_marginHorizontal="15dp"
+                android:elevation="20dp"
+                android:id="@+id/post_price_card"
+                android:layout_below="@+id/post_desc_card"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginHorizontal="15dp"
+                    android:elevation="20dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Price"
+                        android:textColor="@color/black"
+                        android:textSize="17sp"
+                        android:id="@+id/tv_post_price"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"/>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="15sp"
+                        android:layout_below="@+id/tv_post_price"
+                        android:hint="Enter Price for the Item"
+                        android:layout_marginLeft="10dp"
+                        android:id="@+id/post_price"
+                        android:layout_marginVertical="10dp"
+                        android:textColor="@color/primaryred"
+                        android:textCursorDrawable="@color/primaryred"
+                        android:inputType="numberDecimal"/>
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_marginVertical="5dp"
+                android:layout_marginHorizontal="15dp"
+                android:elevation="20dp"
+                android:id="@+id/post_country_card"
+                app:cardCornerRadius="20dp"
+                android:layout_below="@+id/post_price_card"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:id="@id/post_country_rl"
+                        android:layout_marginHorizontal="15dp"
+                        android:elevation="20dp">
+
+                        <TextView
+                            android:layout_width="60dp"
+                            android:layout_height="wrap_content"
+                            android:text="Country"
+                            android:textColor="@color/black"
+                            android:textSize="17sp"
+                            android:id="@+id/tv_post_country"
+                            android:layout_marginBottom="10dp"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="10dp"/>
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="15sp"
+                            android:layout_toRightOf="@+id/tv_post_country"
+                            android:hint="Enter Your Country"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:id="@+id/post_country"
+                            android:textColor="@color/primaryred"
+                            android:layout_centerVertical="true"
+                            android:textCursorDrawable="@color/primaryred"/>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_below="@+id/post_country_rl"
+                        android:layout_marginHorizontal="15dp"
+                        android:id="@+id/post_state_rl"
+                        android:elevation="20dp">
+
+                        <TextView
+                            android:layout_width="60dp"
+                            android:layout_height="wrap_content"
+                            android:text="State"
+                            android:textColor="@color/black"
+                            android:textSize="17sp"
+                            android:id="@+id/tv_post_state"
+                            android:layout_marginBottom="10dp"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="10dp"/>
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="15sp"
+                            android:layout_toRightOf="@+id/tv_post_state"
+                            android:hint="Enter Your State"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:id="@+id/post_state"
+                            android:textColor="@color/primaryred"
+                            android:layout_centerVertical="true"
+                            android:textCursorDrawable="@color/primaryred"/>
+
+                    </RelativeLayout>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_below="@+id/post_state_rl"
+                        android:layout_marginHorizontal="15dp"
+                        android:id="@+id/post_city_rl"
+                        android:elevation="20dp"
+                        android:layout_marginBottom="10dp">
+
+                        <TextView
+                            android:layout_width="60dp"
+                            android:layout_height="wrap_content"
+                            android:text="City"
+                            android:textColor="@color/black"
+                            android:textSize="17sp"
+                            android:id="@+id/tv_post_city"
+                            android:layout_marginBottom="10dp"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="10dp"/>
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="15sp"
+                            android:layout_toRightOf="@+id/tv_post_city"
+                            android:hint="Enter Your City"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:id="@+id/post_city"
+                            android:textColor="@color/primaryred"
+                            android:layout_centerVertical="true"
+                            android:textCursorDrawable="@color/primaryred"/>
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_marginVertical="5dp"
+                app:cardCornerRadius="20dp"
+                android:layout_marginHorizontal="15dp"
+                android:elevation="20dp"
+                android:id="@+id/post_email_card"
+                android:layout_below="@+id/post_country_card"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginHorizontal="15dp"
+                    android:elevation="20dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Email"
+                        android:textColor="@color/black"
+                        android:textSize="17sp"
+                        android:id="@+id/tv_post_email"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"/>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="15sp"
+                        android:layout_below="@+id/tv_post_email"
+                        android:hint="Enter Contact Email"
+                        android:layout_marginLeft="10dp"
+                        android:id="@+id/post_email"
+                        android:layout_marginVertical="10dp"
+                        android:textColor="@color/primaryred"
+                        android:textCursorDrawable="@color/primaryred"
+                        android:inputType="textEmailAddress"/>
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+                <Button
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:text="post"
+                    android:id="@+id/btn_post"
+                    android:layout_below="@+id/post_email_card"
+                    android:textColor="@color/white"
+                    android:layout_marginVertical="15dp"
+                    android:background="@color/primaryred"
+                    android:layout_centerHorizontal="true"/>
+
+
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <ProgressBar
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/progressBar"
+        android:layout_centerInParent="true"
+        android:indeterminateTint="@color/primaryblue"
+        android:visibility="invisible"/>
+
+</RelativeLayout>
