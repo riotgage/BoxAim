@@ -1,5 +1,6 @@
 package com.example.boxaim.Fragments;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,6 +16,7 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import com.example.boxaim.FiltersActivity;
+import com.example.boxaim.HomeActivity;
 import com.example.boxaim.R;
 import com.example.boxaim.authentication.LoginActivity;
 import com.google.android.material.tabs.TabLayout;
@@ -24,22 +26,17 @@ import com.google.firebase.auth.FirebaseUser;
 public class ProfileFragement extends Fragment {
 
     private FirebaseAuth.AuthStateListener mAuthstateListener;
-    private Button msignout,mFilters;
+    private Button mFilters;
     private static final String TAG="Account Fragment";
+    Context mcontext;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v=inflater.inflate(R.layout.fragement_profile,container,false);
-        msignout=v.findViewById(R.id.signout);
         mFilters=v.findViewById(R.id.filter);
         setupFirebaseListener();
-        msignout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d(TAG,"onClick:Sign out");
-                FirebaseAuth.getInstance().signOut();
-            }
-        });
+
         mFilters.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,8 +58,7 @@ public class ProfileFragement extends Fragment {
                 }
                 else{
                     Log.d(TAG,"onAuthStateChanged: signed_out");
-                    Toast.makeText(getActivity(), "Signed Out", Toast.LENGTH_SHORT).show();
-                    Intent intent=new Intent(getActivity(), LoginActivity.class);
+                    Intent intent=new Intent(mcontext, LoginActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
                 }

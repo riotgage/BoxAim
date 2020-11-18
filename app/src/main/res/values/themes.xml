@@ -3,14 +3,14 @@
     <style name="Theme.BoxAim" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/primaryred</item>
         <item name="colorPrimaryVariant">@color/secondaryred</item>
-        <item name="colorOnPrimary">@color/white</item>
-        <item name="actionMenuTextColor">@color/white</item>
-        <item name="android:actionMenuTextColor">@color/white</item>
+        <item name="colorOnPrimary">@color/grey</item>
         <item name="colorAccent">@color/primaryred</item>
+        <item name="android:actionMenuTextColor">@color/primaryred</item>
+        <item name="android:textColorSecondary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/purple_200</item>
         <item name="colorSecondaryVariant">@color/secondaryblue</item>
-        <item name="colorOnSecondary">@color/white</item>
+        <item name="colorOnSecondary">@color/black</item>
 
     </style>
     <style name="SearchViewStyle" parent="Widget.AppCompat.SearchView">
@@ -20,6 +20,7 @@
         <item name="color">@color/white</item>
         <item name="boxBackgroundColor">@null</item>
         <!-- Gets rid of the search icon when the SearchView is expanded -->
+        <item name="android:actionMenuTextColor">@color/primaryred</item>
         <item name="queryHint">@string/search_hint</item>
         <!-- Text Color on search view expanded -->
         <item name="android:editTextColor">@android:color/white</item>
