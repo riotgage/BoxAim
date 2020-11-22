@@ -19,9 +19,11 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
+                android:id="@+id/profile_image"
                 android:src="@mipmap/boxaimlogo"/>
             <TextView
                 android:layout_marginTop="10dp"
+                android:id="@+id/username"
                 android:layout_gravity="center_horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -56,6 +58,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="12"
+                        android:id="@+id/photos"
                         android:textStyle="bold"
                         android:textSize="20sp"
                         android:paddingTop="10dp"
@@ -78,6 +81,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="3"
+                        android:id="@+id/posts"
                         android:textStyle="bold"
                         android:textSize="20sp"
                         android:paddingTop="10dp"
@@ -110,6 +114,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="20dp"
+                android:id="@+id/email"
                 android:text="Default@email.com"/>
         </LinearLayout>
         <LinearLayout
@@ -124,7 +129,7 @@
                 android:src="@drawable/ic_baseline_phone_android_24"/>
             <TextView
                 android:textStyle="bold"
-
+                android:id="@+id/mobile"
                 android:layout_gravity="center_vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

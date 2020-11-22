@@ -25,6 +25,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.victor.loading.rotate.RotateLoading;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -38,7 +39,7 @@ public class LoginActivity extends AppCompatActivity {
     private TextView mRegister;
     private EditText mEmail, mPassword;
     private Button mLogin;
-    private ProgressBar mProgressBar;
+    private RotateLoading mProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -118,12 +119,14 @@ public class LoginActivity extends AppCompatActivity {
 
     private void showProgressBar(){
         mProgressBar.setVisibility(View.VISIBLE);
+        mProgressBar.start();
 
     }
 
     private void hideProgressBar(){
         if(mProgressBar.getVisibility() == View.VISIBLE){
             mProgressBar.setVisibility(View.INVISIBLE);
+            mProgressBar.stop();
         }
     }
 
@@ -134,7 +137,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void initProgressBar(){
-        mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
+        mProgressBar =findViewById(R.id.progressBar);
         mProgressBar.setVisibility(View.INVISIBLE);
     }
 

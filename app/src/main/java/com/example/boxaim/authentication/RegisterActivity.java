@@ -17,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.boxaim.models.User;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -25,6 +26,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import com.example.boxaim.R;
+import com.victor.loading.rotate.RotateLoading;
 
 public class RegisterActivity extends AppCompatActivity {
     private static final String TAG = "RegisterActivity";
@@ -35,7 +37,7 @@ public class RegisterActivity extends AppCompatActivity {
     //widgets
     private EditText mEmail, mName,mPassword, mConfirmPassword;
     private Button mRegister;
-    private ProgressBar mProgressBar;
+    private RotateLoading mProgressBar;
     private TextView mLogin;
 
     //vars
@@ -132,14 +134,18 @@ public class RegisterActivity extends AppCompatActivity {
 
     private void showProgressBar(){
         mProgressBar.setVisibility(View.VISIBLE);
+        mProgressBar.start();
+
     }
 
     private void hideProgressBar(){
         mProgressBar.setVisibility(View.GONE);
+        mProgressBar.stop();
+
     }
 
     private void initProgressBar(){
-        mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
+        mProgressBar =findViewById(R.id.progressBar);
         mProgressBar.setVisibility(View.INVISIBLE);
     }
 
@@ -202,16 +208,18 @@ public class RegisterActivity extends AppCompatActivity {
                             //add user details to firebase database
                             addNewUser();
                         }
-                        if (!task.isSuccessful()) {
-                            Toast.makeText(mContext, "Someone with that email already exists",
-                                    Toast.LENGTH_SHORT).show();
-                            hideProgressBar();
-
-                        }
                         hideProgressBar();
                         // ...
                     }
-                });
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(mContext, e.getLocalizedMessage(),
+                        Toast.LENGTH_SHORT).show();
+                hideProgressBar();
+
+            }
+        });
     }
 
     /**
@@ -225,6 +233,11 @@ public class RegisterActivity extends AppCompatActivity {
         Log.d(TAG, "addNewUser: Adding new User: \n user_id:" + userid);
         mUser.setName(name);
         mUser.setUser_id(userid);
+        mUser.setProfile("default");
+        mUser.setEmail(email);
+        mUser.setMobile("NA");
+        mUser.setPhotos(0);
+        mUser.setPosts(0);
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
 

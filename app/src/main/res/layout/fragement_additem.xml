@@ -109,14 +109,14 @@
                         android:elevation="20dp">
 
                             <TextView
+                                android:id="@+id/tv_post_desc"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="10dp"
                                 android:text="Describe The Item"
                                 android:textColor="@color/black"
-                                android:textSize="17sp"
-                                android:id="@+id/tv_post_desc"
-                                android:layout_marginLeft="10dp"
-                                android:layout_marginTop="10dp"/>
+                                android:textSize="17sp" />
 
                             <EditText
                                 android:layout_width="match_parent"
@@ -364,12 +364,36 @@
 
     </androidx.core.widget.NestedScrollView>
 
-    <ProgressBar
+    <com.victor.loading.rotate.RotateLoading
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:id="@+id/progressBar"
         android:layout_centerInParent="true"
-        android:indeterminateTint="@color/primaryblue"
+        app:loading_color="@color/primaryred"
         android:visibility="invisible"/>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:id="@+id/success_layout"
+        android:layout_centerInParent="true"
+        android:visibility="invisible"
+        android:layout_height="wrap_content">
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/success"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerInParent="true"
+            app:lottie_rawRes="@raw/success"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_below="@+id/success"
+            android:textStyle="bold"
+            android:textSize="17sp"
+            android:layout_centerHorizontal="true"
+            android:text="Post Added Successfully"
+            android:textColor="@color/secondaryred"/>
+    </RelativeLayout>
+
 
 </RelativeLayout>

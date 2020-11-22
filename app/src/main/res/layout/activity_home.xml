@@ -39,7 +39,10 @@
 
         <FrameLayout android:layout_height="match_parent"
             android:layout_width="match_parent"
-            android:id="@+id/fragment_container"/>
+            android:id="@+id/fragment_container">
+
+        </FrameLayout>
+
 
     </androidx.core.widget.NestedScrollView>
 
@@ -56,4 +59,25 @@
         app:itemTextAppearanceActive="@color/primaryblue"
         tools:layout_editor_absoluteY="704dp"
         app:menu="@menu/bottom_navigation"/>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:id="@+id/progressLayout"
+        android:layout_centerInParent="true"
+        android:layout_height="wrap_content">
+        <com.victor.loading.rotate.RotateLoading
+            android:id="@+id/progressBar"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            app:loading_width="5dp"
+            app:loading_color="@color/primaryred"
+            android:layout_centerInParent="true"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/progressBar"
+            android:text="Fetching Data for you , please Wait...."
+            android:layout_centerHorizontal="true"/>
+    </RelativeLayout>
+
+
 </RelativeLayout>

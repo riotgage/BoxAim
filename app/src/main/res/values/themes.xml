@@ -13,25 +13,21 @@
         <item name="colorOnSecondary">@color/black</item>
 
     </style>
-    <style name="SearchViewStyle" parent="Widget.AppCompat.SearchView">
-        <!-- Gets rid of the search icon -->
-        <item name="searchIcon">@drawable/search</item>
-        <!-- Gets rid of the "underline" in the text -->
-        <item name="color">@color/white</item>
-        <item name="boxBackgroundColor">@null</item>
-        <!-- Gets rid of the search icon when the SearchView is expanded -->
-        <item name="android:actionMenuTextColor">@color/primaryred</item>
-        <item name="queryHint">@string/search_hint</item>
-        <!-- Text Color on search view expanded -->
-        <item name="android:editTextColor">@android:color/white</item>
 
-    </style>
-
-    <style name="Theme.Search" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="Theme.Search" parent="Widget.AppCompat.SearchView">
         <item name="colorPrimary">@color/primaryred</item>
         <item name="colorPrimaryVariant">@color/secondaryred</item>
         <item name="colorOnPrimary">@color/white</item>
+        <!-- Gets rid of the "underline" in the text -->
+        <item name="color">@color/white</item>
+        <item name="android:queryBackground">@color/white</item>
+        <!-- Gets rid of the search icon when the SearchView is expanded -->
+        <item name="queryHint">@string/search_hint</item>
+        <item name="searchHintIcon">@null</item>
+        <!-- Text Color on search view expanded -->
+        <item name="android:editTextColor">@color/black</item>
         <!-- Secondary brand color. -->
+        <item name="android:textColorSecondary">@color/primaryred</item>
         <item name="colorSecondary">@color/purple_200</item>
         <item name="colorSecondaryVariant">@color/secondaryblue</item>
         <item name="colorOnSecondary">@color/white</item>

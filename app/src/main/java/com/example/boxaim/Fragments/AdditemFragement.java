@@ -1,5 +1,7 @@
 package com.example.boxaim.Fragments;
 
+import android.animation.Animator;
+import android.animation.ValueAnimator;
 import android.app.Dialog;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -15,6 +17,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -22,6 +25,7 @@ import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.example.boxaim.R;
 import com.example.boxaim.SelectPhotoDialog;
 import com.example.boxaim.models.Post;
@@ -39,6 +43,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.victor.loading.rotate.RotateLoading;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -49,11 +54,12 @@ public class AdditemFragement extends Fragment implements SelectPhotoDialog.OnPh
     private ImageView PostImage;
     private EditText mTitle, mDescription, mPrice, mCountry, mStateProvince, mCity, mContactEmail;
     private CardView mPostImage;
-    private ProgressBar mProgressBar;
+    private RotateLoading mProgressBar;
     private Button mPost;
-
+    LottieAnimationView animationView;
     private Bitmap selectedBitmap;
     private Uri selectedUri;
+    RelativeLayout animaLL;
     private byte []mUploadBytes;
     @Nullable
     @Override
@@ -67,13 +73,14 @@ public class AdditemFragement extends Fragment implements SelectPhotoDialog.OnPh
         mTitle = view.findViewById(R.id.post_title);
         mDescription = view.findViewById(R.id.post_desc);
         mPrice = view.findViewById(R.id.post_price);
+        animationView=view.findViewById(R.id.success);
         mCountry = view.findViewById(R.id.post_country);
         mStateProvince = view.findViewById(R.id.post_state);
         mCity = view.findViewById(R.id.post_city);
         mContactEmail = view.findViewById(R.id.post_email);
         mPost = view.findViewById(R.id.btn_post);
-        mProgressBar = (ProgressBar) view.findViewById(R.id.progressBar);
-
+        mProgressBar = view.findViewById(R.id.progressBar);
+        animaLL=view.findViewById(R.id.success_layout);
         init();
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
@@ -91,12 +98,16 @@ public class AdditemFragement extends Fragment implements SelectPhotoDialog.OnPh
 
 
                     //we have a bitmap and no Uri
-                    showProgressBar();
-                    if(selectedBitmap != null && selectedUri == null){
+                    if(selectedBitmap == null && selectedUri == null){
+                        Toast.makeText(getContext(), "Add image for the Post", Toast.LENGTH_SHORT).show();
+                    }
+                    else if(selectedBitmap != null && selectedUri == null){
+                        showProgressBar();
                         uploadNewPhoto(selectedBitmap);
                     }
                     //we have no bitmap and a uri
-                    else if(selectedBitmap == null && selectedUri != null){
+                    else{
+                        showProgressBar();
                         uploadNewPhoto(selectedUri);
                     }
                 }else{
@@ -185,10 +196,12 @@ public class AdditemFragement extends Fragment implements SelectPhotoDialog.OnPh
                         post.setPost_id(postId);
                         post.setPrice(mPrice.getText().toString());
                         post.setCountry(mCountry.getText().toString());
-                        post.setTitle(mTitle.getText().toString());
+                        post.setTitle(mTitle.getText().toString().toLowerCase());
                         post.setUser_id(FirebaseAuth.getInstance().getCurrentUser().getUid());
                         resetFields();
+
                         hideProgressBar();
+                        successAnimation();
                         reference.child(getString(R.string.node_posts)).child(postId).setValue(post);
                     }
                 }
@@ -248,12 +261,14 @@ public class AdditemFragement extends Fragment implements SelectPhotoDialog.OnPh
     private void showProgressBar(){
         Log.d(TAG,"Progress bar : running");
         mProgressBar.setVisibility(View.VISIBLE);
+        mProgressBar.start();
     }
 
     private void hideProgressBar(){
         Log.d(TAG,"Progress bar : stopped");
         if(mProgressBar.getVisibility() == View.VISIBLE){
             mProgressBar.setVisibility(View.INVISIBLE);
+            mProgressBar.stop();
         }
     }
 
@@ -280,5 +295,19 @@ public class AdditemFragement extends Fragment implements SelectPhotoDialog.OnPh
         PostImage.setImageBitmap(bitmap);
         selectedBitmap=bitmap;
         selectedUri=null;
+    }
+
+    public void successAnimation(){
+        animaLL.setVisibility(View.VISIBLE);
+        animationView.playAnimation();
+        animationView.addAnimatorUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                if(animation.getAnimatedFraction()==1f) {
+                    animationView.cancelAnimation();
+                    animaLL.setVisibility(View.GONE);
+                }
+            }
+        });
     }
 }
